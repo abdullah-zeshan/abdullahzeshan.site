@@ -234,6 +234,30 @@
   .feat-desc{margin-top:16px; color:var(--muted); font-size:0.98rem; line-height:1.8; max-width:60ch;}
   .feat-tags{display:flex; gap:10px; flex-wrap:wrap; margin-top:22px;}
   .feat-tag-chip{font-family:var(--ff-mono); font-size:0.74rem; padding:6px 13px; border:1px solid var(--line); border-radius:999px; color:var(--muted);}
+  .proj-grid{margin-top:50px; display:flex; flex-direction:column; gap:20px;}
+  .proj-card{position:relative; overflow:hidden; border:1px solid var(--line); border-radius:16px; padding:clamp(22px,3vw,32px); background:var(--paper); transition:border-color 0.35s, transform 0.35s cubic-bezier(.2,.8,.2,1), box-shadow 0.35s;}
+  .proj-card::before{content:''; position:absolute; left:0; top:0; width:3px; height:0; background:var(--lime); transition:height 0.45s cubic-bezier(.2,.8,.2,1);}
+  .proj-card:hover{border-color:transparent; transform:translateY(-6px); box-shadow:0 24px 46px -26px rgba(20,18,14,0.28);}
+  .proj-card:hover::before{height:100%;}
+  .proj-eyebrow{font-family:var(--ff-mono); font-size:0.72rem; color:var(--lime-dark); text-transform:uppercase; letter-spacing:0.06em; display:block; margin-bottom:14px;}
+  .proj-title{font-size:clamp(1.15rem,2vw,1.4rem); letter-spacing:-0.01em; margin-bottom:12px; max-width:32ch;}
+  .proj-desc{color:var(--muted); font-size:0.94rem; line-height:1.75; max-width:62ch; margin-bottom:18px;}
+  .proj-meta{display:flex; gap:22px; flex-wrap:wrap; font-family:var(--ff-mono); font-size:0.74rem; color:var(--muted); margin-bottom:18px;}
+  .proj-meta b{color:var(--ink); font-weight:600;}
+  .proj-meta .flag{color:var(--lime-dark); font-weight:600;}
+  .feat-tag-chip{transition:background 0.3s ease, color 0.3s ease, border-color 0.3s ease;}
+  .proj-card:hover .feat-tag-chip{background:var(--ink); color:var(--lime); border-color:var(--ink);}
+  .proj-card:hover .feat-tag-chip:nth-child(1){transition-delay:0s;}
+  .proj-card:hover .feat-tag-chip:nth-child(2){transition-delay:.06s;}
+  .proj-card:hover .feat-tag-chip:nth-child(3){transition-delay:.12s;}
+  .proj-card:hover .feat-tag-chip:nth-child(4){transition-delay:.18s;}
+  .proj-link{position:relative; display:inline-flex; align-items:center; gap:9px; margin-top:2px; font-family:var(--ff-body); font-weight:600; font-size:0.9rem; color:var(--ink); text-decoration:none; border-bottom:1px solid var(--ink); padding-bottom:2px; transition:opacity 0.25s;}
+  .proj-link:hover{opacity:0.7;}
+  .live-dot{position:relative; width:7px; height:7px; border-radius:50%; background:var(--lime-dark); flex-shrink:0;}
+  .live-dot::after{content:''; position:absolute; inset:-5px; border-radius:50%; border:1px solid var(--lime-dark); opacity:0; animation:pulseRing 2s ease-out infinite;}
+  @keyframes pulseRing{0%{opacity:0.6; transform:scale(0.6);} 100%{opacity:0; transform:scale(2);}}
+  .proj-arrow{display:inline-block; transition:transform 0.3s cubic-bezier(.2,.8,.2,1);}
+  .proj-link:hover .proj-arrow{transform:translateX(6px);}
 
   /* education */
   .edu-list{margin-top:60px; display:grid; grid-template-columns:repeat(3,1fr); gap:30px;}
@@ -549,13 +573,25 @@
 
 <section id="projects" class="wrap-section">
   <div class="wrap reveal">
-    <span class="sec-label">03 / Featured Project</span>
-    <h2 class="sec-title">A closer look at one build.</h2>
-    <div class="feat">
-      <div class="feat-media"><span class="fm-tag">TVA / Homeschooling / 2024–2026</span></div>
-      <div class="feat-body">
-        <h3 class="feat-title">TVA: The Virtual Academy, Pakistan's First Homeschooling Platform</h3>
-        <p class="feat-desc">Homeschooling is a hard sell to skeptical parents. My job was closing that trust gap, content and campaigns that made a screen feel like a real classroom, nationwide.</p>
+    <span class="sec-label">03 / Projects</span>
+    <h2 class="sec-title">A closer look at what I've built.</h2>
+
+    <div class="proj-grid">
+      <div class="proj-card">
+        <span class="proj-eyebrow">Home Guardian / Residential AI / 2026</span>
+        <h3 class="proj-title">Home Guardian: Your House, Explained</h3>
+        <p class="proj-desc">Most homeowners in Pakistan never get a formal inspection, so they move in blind to what's actually wrong with their home. Home Guardian turns that blind spot into clear answers: an emergency right now, a report to decode, or one built from scratch.</p>
+        <div class="proj-meta"><span>ISSUE <b>Water leak, kitchen ceiling</b></span><span>URGENCY <b class="flag">Fix within 24h</b></span></div>
+        <div class="feat-tags">
+          <span class="feat-tag-chip">Emergency Triage</span><span class="feat-tag-chip">Report Analyzer</span><span class="feat-tag-chip">AI Report Generator</span>
+        </div>
+        <a href="https://home-guardian.vercel.app/" target="_blank" rel="noopener" class="proj-link"><span class="live-dot"></span>See it live<span class="proj-arrow">→</span></a>
+      </div>
+
+      <div class="proj-card">
+        <span class="proj-eyebrow">TVA / Homeschooling / 2024–2026</span>
+        <h3 class="proj-title">TVA: The Virtual Academy, Pakistan's First Homeschooling Platform</h3>
+        <p class="proj-desc">Homeschooling is a hard sell to skeptical parents. My job was closing that trust gap, content and campaigns that made a screen feel like a real classroom, nationwide.</p>
         <div class="feat-tags">
           <span class="feat-tag-chip">Content Strategy</span><span class="feat-tag-chip">Paid Campaigns</span><span class="feat-tag-chip">Community Building</span><span class="feat-tag-chip">Nationwide Rollout</span>
         </div>
